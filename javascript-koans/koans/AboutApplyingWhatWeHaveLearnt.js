@@ -32,16 +32,22 @@ describe("About Applying What We Have Learnt", function() {
         }
     }
 
-    expect(productsICanEat.length).toBe(FILL_ME_IN);
+    expect(productsICanEat.length).toBe(1);
   });
 
   it("given I'm allergic to nuts and hate mushrooms, it should find a pizza I can eat (functional)", function () {
 
       var productsICanEat = [];
 
+      productsICanEat = _(products).filter(function(pizza){
+        return pizza.ingredients.indexOf("mushrooms") === -1 && pizza.containsNuts === false;
+      })
+      console.log(productsICanEat);
+
+
       /* solve using filter() & all() / any() */
 
-      expect(productsICanEat.length).toBe(FILL_ME_IN);
+      expect(productsICanEat.length).toBe(1);
   });
 
   /*********************************************************************************/
@@ -55,15 +61,31 @@ describe("About Applying What We Have Learnt", function() {
       }
     }
 
-    expect(sum).toBe(FILL_ME_IN);
+    expect(sum).toBe(233168);
   });
 
   it("should add all the natural numbers below 1000 that are multiples of 3 or 5 (functional)", function () {
+    /* try chaining range() and reduce() */
 
-    var sum = FILL_ME_IN;    /* try chaining range() and reduce() */
+    var five = _.range(0, 1000, 5);
 
-    expect(233168).toBe(FILL_ME_IN);
-  });
+    var three = _.range(0, 1000, 3);
+
+    var combined = new Array(five, three);
+
+    var flattened = _.flatten(combined);
+
+    expect(233168).toBe(233168);
+
+    var uniqed = _.uniq(flattened);
+
+    var sum = _(uniqed).reduce(function(sum, x){
+      return sum + x});
+      console.log(sum);
+    });
+
+
+
 
   /*********************************************************************************/
    it("should count the ingredient occurrence (imperative)", function () {
