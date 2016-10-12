@@ -105,23 +105,23 @@ describe("About Applying What We Have Learnt", function() {
 
     /* chain() together map(), flatten() and reduce() */
 
-    _.chain(products)
+    _(products).chain()
       .map(function(pizza){
         return pizza.ingredients;
       })
       .flatten()
       .reduce(function(ingredientObj, ingredient){
-        if(ingredientObj [ingredient]){
-        ingredientObj [ingredient] += 1;
+        if(ingredientObj[ingredient]){
+        ingredientObj[ingredient] += 1;
       }else{
-        ingredientObj [ingredient] =1;
+        ingredientObj[ingredient] = 1;
       }
         return ingredientObj;
-      });
+      },ingredientCount);
 
 console.log('ingredientCount: ', ingredientCount);
 
-    expect(ingredientCount['mushrooms']).toBe(FILL_ME_IN);
+    expect(ingredientCount['mushrooms']).toBe(2);
   });
 
   /*********************************************************************************/
