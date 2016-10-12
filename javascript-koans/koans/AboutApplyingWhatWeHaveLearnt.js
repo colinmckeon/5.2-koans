@@ -97,13 +97,29 @@ describe("About Applying What We Have Learnt", function() {
         }
     }
 
-    expect(ingredientCount['mushrooms']).toBe(FILL_ME_IN);
+    expect(ingredientCount['mushrooms']).toBe(2);
   });
 
   it("should count the ingredient occurrence (functional)", function () {
     var ingredientCount = { "{ingredient name}": 0 };
 
     /* chain() together map(), flatten() and reduce() */
+
+    _.chain(products)
+      .map(function(pizza){
+        return pizza.ingredients;
+      })
+      .flatten()
+      .reduce(function(ingredientObj, ingredient){
+        if(ingredientObj [ingredient]){
+        ingredientObj [ingredient] += 1;
+      }else{
+        ingredientObj [ingredient] =1;
+      }
+        return ingredientObj;
+      });
+
+console.log('ingredientCount: ', ingredientCount);
 
     expect(ingredientCount['mushrooms']).toBe(FILL_ME_IN);
   });
